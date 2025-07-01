@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -51,4 +51,4 @@ margin-left: 180px;
 @keyframes orbit6 { 0% { transform: rotate(0deg) translateX(150px); } 100% { transform: rotate(360deg) translateX(150px); } }
 @keyframes orbit7 { 0% { transform: rotate(0deg) translateX(170px); } 100% { transform: rotate(360deg) translateX(170px); } }
 @keyframes orbit8 { 0% { transform: rotate(0deg) translateX(190px); } 100% { transform: rotate(360deg) translateX(190px); } }
-@keyframes orbit9 { 0% { transform: rotate(0deg) translateX(210px); } 100% { transform: rotate(360deg) translateX(210px); } }
+@keyframes orbit9 { 0% { transform: rotate(0deg) translateX(210px); } 100% { transform: rotate(360deg) translateX(210px); } } */
