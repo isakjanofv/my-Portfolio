@@ -1,68 +1,60 @@
 const translations = {
-    uz: {
-      logo: "YusufDev",
-      home: "Bosh sahifa",
-      about: "Men haqimda",
-      skills: "Ko'nikmalar",
-      projects: "Loyihalar",
-      contact: "Aloqa",
-      greeting: "Salom! Men Yusuf",
-      intro: "Men frontend developer va bot yaratuvchiman.",
-      rights: "© 2025 Muhammad Yusuf. Barcha huquqlar himoyalangan.",
-      aboutText: "Ismim Muhammad Yusuf. Namanganda yashayman. Frontend dasturlash, Telegram botlar, Web3, va video montaj bilan shug‘ullanaman.",
-      namePlaceholder: "Ismingiz",
-      emailPlaceholder: "Email manzil",
-      messagePlaceholder: "Xabar...",
-      submitButton: "Yuborish",
-    },
-    en: {
-      logo: "YusufDev",
-      home: "Home",
-      about: "About Me",
-      skills: "Skills",
-      projects: "Projects",
-      contact: "Contact",
-      greeting: "Hello! I'm Yusuf",
-      intro: "I'm a frontend developer and bot creator.",
-      rights: "© 2025 Muhammad Yusuf. All rights reserved.",
-      aboutText: "My name is Muhammad Yusuf. I'm from Namangan. I work on frontend development, Telegram bots, Web3, and video editing.",
-      namePlaceholder: "Your name",
-      emailPlaceholder: "Email address",
-      messagePlaceholder: "Message...",
-      submitButton: "Send",
+  uz: {
+    logo: "Isakjanov",
+    home: "Bosh sahifa",
+    about: "Men haqimda",
+    skills: "Ko'nikmalar",
+    projects: "Loyihalar",
+    contact: "Aloqa",
+    greeting: "Salom! Men Isakjanov",
+    intro: "Men frontend developer va bot yaratuvchiman.",
+    rights: "© 2025 Isakjanov. Barcha huquqlar himoyalangan.",
+  },
+  en: {
+    logo: "Isakjanov",
+    home: "Home",
+    about: "About Me",
+    skills: "Skills",
+    projects: "Projects",
+    contact: "Contact",
+    greeting: "Hello! I'm Isakjanov",
+    intro: "I'm a frontend developer and bot creator.",
+    rights: "© 2025 Isakjanov. All rights reserved.",
+  },
+};
+
+function setLang(lang) {
+  const elements = document.querySelectorAll("[data-i18n]");
+  elements.forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang]?.[key]) {
+      el.textContent = translations[lang][key];
     }
-  };
-  
-  function setLang(lang) {
-    // Text content tarjimalar
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      if (translations[lang]?.[key]) {
-        el.textContent = translations[lang][key];
-      }
-    });
-  
-    // Placeholder tarjimalar
-    document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-      const key = el.getAttribute("data-i18n-placeholder");
-      if (translations[lang]?.[key]) {
-        el.setAttribute("placeholder", translations[lang][key]);
-      }
-    });
-  
-    // Buttonlar uchun value tarjimasi
-    document.querySelectorAll("[data-i18n-value]").forEach((el) => {
-      const key = el.getAttribute("data-i18n-value");
-      if (translations[lang]?.[key]) {
-        el.value = translations[lang][key];
-      }
-    });
-  
-    localStorage.setItem("lang", lang);
-  }
-  
-  document.addEventListener("DOMContentLoaded", () => {
-    const savedLang = localStorage.getItem("lang") || "uz";
-    setLang(savedLang);
   });
-  
+
+  localStorage.setItem("lang", lang);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Til
+  const savedLang = localStorage.getItem("lang") || "uz";
+  setLang(savedLang);
+
+  // Dark Mode
+  const modeToggle = document.getElementById("mode-toggle");
+  const savedMode = localStorage.getItem("mode");
+
+  if (savedMode === "dark") {
+    document.body.classList.add("dark-mode");
+    if (modeToggle) modeToggle.textContent = "☀️";
+  }
+
+  if (modeToggle) {
+    modeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      modeToggle.textContent = isDark ? "☀️" : "🌙";
+      localStorage.setItem("mode", isDark ? "dark" : "light");
+    });
+  }
+});
