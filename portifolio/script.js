@@ -36,7 +36,7 @@ function setLang(lang) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Til
+  // Till
   const savedLang = localStorage.getItem("lang") || "uz";
   setLang(savedLang);
 
